@@ -14,7 +14,7 @@ variables:
   webAppName: 'StudentManagementFastApi'
 
   # Agent VM image name
-  vmImageName: 'ubuntu-latest'
+  #vmImageName: 'ubuntu-latest'
 
   # Environment name
   environmentName: 'StudentManagementFastApi'
@@ -30,7 +30,8 @@ stages:
   jobs:
   - job: BuildJob
     pool:
-      vmImage: $(vmImageName)
+      #vmImage: $(vmImageName)
+      name: selfhosted-pool 
     steps:
     - task: UsePythonVersion@0
       inputs:
@@ -66,7 +67,8 @@ stages:
   jobs:
   - deployment: DeploymentJob
     pool:
-      vmImage: $(vmImageName)
+      #vmImage: $(vmImageName)
+      name: selfhosted-pool 
     environment: $(environmentName)
     strategy:
       runOnce:
